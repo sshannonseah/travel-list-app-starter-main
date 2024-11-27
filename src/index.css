@@ -44,6 +44,18 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
+
+}
+
+h2 {
+  font-size: 3.0rem;
+  font-family: "QuickSand";
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: pink;
+  padding: 1.5rem 1rem;
+
 }
 
 h3 {
@@ -130,3 +142,4 @@ input[type="checkbox"] {
   font-weight: 700;
   padding: 3.2rem 0;
 }
+

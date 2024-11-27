@@ -7,6 +7,7 @@ import Stats from "./Stats";
  
 function App() {
   const [items, setItems] = useState([]);
+  const travelDate = "2024-12-10";
  
   function handleAddItem(newItem) {
     setItems((prevItems) => [...prevItems, newItem]);
@@ -22,9 +23,10 @@ function App() {
     ));
   }
 
+
   return (
     <div className="app">
-      <Logo />
+      <Logo travelDate={travelDate} />
       <Form onAddItem={handleAddItem} />
       <PackingList items={items} onDeleteItem={handleDeleteItem} updatedItem= {handleUpdateItem} />
       <Stats items={items} />

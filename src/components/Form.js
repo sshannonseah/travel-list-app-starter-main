@@ -4,14 +4,29 @@ import React, { useState } from "react";
 function Form({onAddItem}) {
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState(1);
+    const [photo, setPhoto] = useState(null);
+
+    const handlePhotoChange = (e) => {
+        const file = e.target.files[0]; 
+        if (file) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            setPhoto(reader.result); 
+          };
+          reader.readAsDataURL(file); 
+        }
+      };
+
     function handleSubmit(e) {
       e.preventDefault();
-      const newItem = { id: Date.now(), description, quantity, packed: false };
+      const newItem = { id: Date.now(), description, quantity,photo, packed: false };
       onAddItem(newItem);
       setDescription("");
       setQuantity(1);
+      setPhoto(null);
     }
-   
+
+
    
     return (
       <form className="add-form" onSubmit={handleSubmit}>
@@ -29,6 +44,7 @@ function Form({onAddItem}) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+        <input type="file" accept="image/*" onChange={handlePhotoChange} />
         <button type= "submit">Add</button>
       </form>
     );
